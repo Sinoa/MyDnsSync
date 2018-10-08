@@ -14,6 +14,8 @@
 // 3. This notice may not be removed or altered from any source distribution.
 
 using System;
+using System.Windows.Forms;
+using MyDnsSync.Components;
 
 namespace MyDnsSync
 {
@@ -23,6 +25,11 @@ namespace MyDnsSync
     /// </summary>
     internal sealed class ApplicationMain : IDisposable
     {
+        // メンバ変数定義
+        private MainNotifyIcon mainNotifyIcon;
+
+
+
         /// <summary>
         /// アプリケーションのエントリポイントです
         /// </summary>
@@ -43,6 +50,14 @@ namespace MyDnsSync
         /// </summary>
         private ApplicationMain()
         {
+            // ビジュアルスタイルを有効にしてGID+を切る
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+
+            // メイン通知アイコンを生成して表示する
+            mainNotifyIcon = new MainNotifyIcon();
+            mainNotifyIcon.Show();
         }
 
 
@@ -51,6 +66,8 @@ namespace MyDnsSync
         /// </summary>
         public void Dispose()
         {
+            // メイン通知アイコンを破棄する
+            mainNotifyIcon.Dispose();
         }
 
 
@@ -59,6 +76,8 @@ namespace MyDnsSync
         /// </summary>
         private void Run()
         {
+            // Windowsメインループを開始する
+            Application.Run();
         }
     }
 }

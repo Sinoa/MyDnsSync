@@ -38,11 +38,24 @@
     <StartupObject>MyDnsSync.ApplicationMain</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Components\MainNotifyIcon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\MainNotifyIcon.Designer.cs">
+      <DependentUpon>MainNotifyIcon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\ApplicationMain.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Components\MainNotifyIcon.resx">
+      <DependentUpon>MainNotifyIcon.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
