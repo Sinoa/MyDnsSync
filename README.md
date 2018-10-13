@@ -17,6 +17,9 @@
 
 詳細表記は LICENSELIST.md に表記
 
+* CredentialManager (MIT License) <https://github.com/AdysTech/CredentialManager>
+* AngleSharp (MIT License) <https://anglesharp.github.io/>
+
 ## 履歴(Version)
 
 未記入
