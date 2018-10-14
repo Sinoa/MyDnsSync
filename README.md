@@ -19,6 +19,7 @@
 
 * CredentialManager (MIT License) <https://github.com/AdysTech/CredentialManager>
 * AngleSharp (MIT License) <https://anglesharp.github.io/>
+* log4net (Apache License V2.0) <http://logging.apache.org/log4net/>
 
 ## 履歴(Version)
 
