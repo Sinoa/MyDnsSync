@@ -43,9 +43,7 @@ namespace MyDnsSync
             using (var main = new ApplicationMain())
             {
                 // アプリケーションを開始する
-                main.logger.Info("アプリケーションを起動します");
                 main.Run();
-                main.logger.Info("アプリケーションが終了しました");
             }
         }
 
@@ -97,7 +95,9 @@ namespace MyDnsSync
         private void Run()
         {
             // Windowsメインループを開始する
+            logger.Info("アプリケーションを起動しています");
             Application.Run();
+            logger.Info("アプリケーションが終了しました");
         }
     }
 }
