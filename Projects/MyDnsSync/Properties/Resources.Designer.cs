@@ -95,5 +95,25 @@ namespace MyDnsSync.Properties {
                 return ResourceManager.GetString("LogTextFormat", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Icon SyncErrorIcon {
+            get {
+                object obj = ResourceManager.GetObject("SyncErrorIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Icon SyncOffIcon {
+            get {
+                object obj = ResourceManager.GetObject("SyncOffIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }

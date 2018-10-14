@@ -37,6 +37,9 @@
   <PropertyGroup>
     <StartupObject>MyDnsSync.ApplicationMain</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Assets\Icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Components\MainNotifyIcon.cs">
       <SubType>Component</SubType>
@@ -88,7 +91,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Icon.xcf" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Assets\Icon.ico" />
+    <Content Include="Assets\SyncError.ico" />
+    <Content Include="Assets\SyncOff.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
