@@ -14,12 +14,8 @@
 // 3. This notice may not be removed or altered from any source distribution.
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using log4net;
 using Microsoft.Win32;
 
 namespace MyDnsSync.Components
@@ -30,6 +26,7 @@ namespace MyDnsSync.Components
     public partial class MyDnsSyncHandler : Component
     {
         // メンバ変数定義
+        private ILog logger;
         private MyDnsSynchronizer synchronizer;
 
 
@@ -63,6 +60,11 @@ namespace MyDnsSync.Components
         /// </summary>
         private void InitializeCommon()
         {
+            // ロガーの取得
+            logger = LogManager.GetLogger(GetType());
+            logger.Debug("MyDNS同期ハンドラを作成しています");
+
+
             // MyDNS同期のインスタンスを生成してタイマーをセットアップする
             synchronizer = new MyDnsSynchronizer();
             SetupNextTimerEvent();
@@ -87,6 +89,7 @@ namespace MyDnsSync.Components
             // イベントの解除を行う
             SystemEvents.TimeChanged -= OnSystemTimeChanged;
             Disposed -= OnDisposed;
+            logger.Debug("MyDNS同期ハンドラが破棄されました");
         }
 
 
@@ -98,6 +101,7 @@ namespace MyDnsSync.Components
         private void OnSystemTimeChanged(object sender, EventArgs e)
         {
             // 次に発生させるタイマーのイベントをセットアップする
+            logger.Debug("システムの時刻が変更されました");
             SetupNextTimerEvent();
         }
 
@@ -114,6 +118,7 @@ namespace MyDnsSync.Components
             if (credential == null)
             {
                 // タイマーの再設定だけして終了
+                logger.Error("MyDNSログイン情報が取得出来ませんでした");
                 SetupNextTimerEvent();
                 return;
             }
@@ -124,6 +129,7 @@ namespace MyDnsSync.Components
             if (!result)
             {
                 // タイマーの再設定をして終了
+                logger.Error("MyDNSとの同期に失敗しました");
                 SetupNextTimerEvent();
                 return;
             }
@@ -147,6 +153,7 @@ namespace MyDnsSync.Components
 
             // タイマーを起動する
             timer.Start();
+            logger.Info("次回の同期時間が設定されました");
         }
     }
 }
