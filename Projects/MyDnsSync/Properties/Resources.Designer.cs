@@ -86,5 +86,14 @@ namespace MyDnsSync.Properties {
                 return ResourceManager.GetString("CredentialTargetName", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   [%level](%date{yyyy-MM-dd HH:mm:ss}):(%thread) %message に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string LogTextFormat {
+            get {
+                return ResourceManager.GetString("LogTextFormat", resourceCulture);
+            }
+        }
     }
 }

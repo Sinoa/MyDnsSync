@@ -126,4 +126,7 @@
   <data name="CredentialTargetName" xml:space="preserve">
     <value>MyDnsSync</value>
   </data>
+  <data name="LogTextFormat" xml:space="preserve">
+    <value>[%level](%date{yyyy-MM-dd HH:mm:ss}):(%thread) %message</value>
+  </data>
 </root>
