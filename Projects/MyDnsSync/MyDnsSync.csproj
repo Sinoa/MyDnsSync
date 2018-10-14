@@ -59,6 +59,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="src\ApplicationConfig.cs" />
     <Compile Include="src\ApplicationMain.cs" />
     <Compile Include="src\ApplicationUtility.cs" />
     <Compile Include="src\MyDnsSynchronizer.cs" />
@@ -77,6 +78,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Components\MainNotifyIcon.resx">
