@@ -88,7 +88,7 @@ namespace MyDnsSync.Properties {
         }
         
         /// <summary>
-        ///   [%level](%date{yyyy-MM-dd HH:mm:ss}):(%thread) %message に類似しているローカライズされた文字列を検索します。
+        ///   [%level](%date{yyyy-MM-dd HH:mm:ss}):%thread:%message%n に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string LogTextFormat {
             get {
