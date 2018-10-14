@@ -133,6 +133,11 @@ namespace MyDnsSync.Components
                 SetupNextTimerEvent();
                 return;
             }
+
+
+            // タイマーの再設定をして終了
+            logger.Info("MyDNSとの同期に成功しました");
+            SetupNextTimerEvent();
         }
 
 
