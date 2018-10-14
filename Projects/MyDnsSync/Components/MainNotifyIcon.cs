@@ -14,9 +14,11 @@
 // 3. This notice may not be removed or altered from any source distribution.
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using MyDnsSync.Properties;
 
 namespace MyDnsSync.Components
 {
@@ -25,6 +27,34 @@ namespace MyDnsSync.Components
     /// </summary>
     public partial class MainNotifyIcon : Component
     {
+        /// <summary>
+        /// アイコンの表示パターンを表します
+        /// </summary>
+        private enum IconPattern
+        {
+            /// <summary>
+            /// 通常アイコン
+            /// </summary>
+            Normal,
+
+            /// <summary>
+            /// 同期がOFF
+            /// </summary>
+            SyncOff,
+
+            /// <summary>
+            /// 同期エラー
+            /// </summary>
+            SyncError,
+        }
+
+
+
+        // メンバ変数定義
+        private Dictionary<IconPattern, Icon> iconTable;
+
+
+
         /// <summary>
         /// MainNotifyIcon のインスタンスを初期化します
         /// </summary>
@@ -60,8 +90,17 @@ namespace MyDnsSync.Components
         /// </summary>
         private void InitializeCommon()
         {
-            // 通知アイコンのアイコンを雑に設定
-            notifyIcon.Icon = SystemIcons.Application;
+            // アイコンテーブルを初期化する
+            iconTable = new Dictionary<IconPattern, Icon>()
+            {
+                { IconPattern.Normal, Icon.ExtractAssociatedIcon(Application.ExecutablePath) },
+                { IconPattern.SyncOff, Resources.SyncOffIcon },
+                { IconPattern.SyncError, Resources.SyncErrorIcon },
+            };
+
+
+            // 通知アイコンのアイコンを通常に設定
+            notifyIcon.Icon = iconTable[IconPattern.Normal];
 
 
             // 各種イベントの登録をする
