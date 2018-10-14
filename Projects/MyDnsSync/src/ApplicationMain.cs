@@ -16,6 +16,7 @@
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using log4net;
 using MyDnsSync.Components;
 
 namespace MyDnsSync
@@ -27,6 +28,7 @@ namespace MyDnsSync
     internal sealed class ApplicationMain : IDisposable
     {
         // メンバ変数定義
+        private ILog logger;
         private Container components;
 
 
@@ -41,7 +43,9 @@ namespace MyDnsSync
             using (var main = new ApplicationMain())
             {
                 // アプリケーションを開始する
+                main.logger.Info("アプリケーションを起動します");
                 main.Run();
+                main.logger.Info("アプリケーションが終了しました");
             }
         }
 
@@ -56,11 +60,13 @@ namespace MyDnsSync
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-            // ログシステムの初期化
+            // ログシステムの初期化をしてロガーの取得
             ApplicationUtility.InitializeLogSystemConfig();
+            logger = LogManager.GetLogger(GetType());
 
 
             // コンポーネントを格納するコンテナを生成
+            logger.Debug("コンポーネントを初期化しています");
             components = new Container();
 
 
@@ -71,6 +77,7 @@ namespace MyDnsSync
 
             // MyDNS同期コンポーネントを生成する
             new MyDnsSyncHandler(components);
+            logger.Debug("コンポーネントを初期化しました");
         }
 
 
