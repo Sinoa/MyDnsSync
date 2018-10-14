@@ -51,6 +51,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="src\ApplicationMain.cs" />
+    <Compile Include="src\ApplicationUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AdysTech.CredentialManager, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
