@@ -56,6 +56,10 @@ namespace MyDnsSync
             Application.SetCompatibleTextRenderingDefault(false);
 
 
+            // ログシステムの初期化
+            ApplicationUtility.InitializeLogSystemConfig();
+
+
             // コンポーネントを格納するコンテナを生成
             components = new Container();
 

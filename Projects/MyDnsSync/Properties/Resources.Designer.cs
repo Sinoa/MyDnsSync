@@ -88,6 +88,15 @@ namespace MyDnsSync.Properties {
         }
         
         /// <summary>
+        ///   Logs/applog.log に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string DefaultOutputLogFilePath {
+            get {
+                return ResourceManager.GetString("DefaultOutputLogFilePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   [%level](%date{yyyy-MM-dd HH:mm:ss}):%thread:%message%n に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string LogTextFormat {
