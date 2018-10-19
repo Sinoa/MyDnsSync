@@ -28,7 +28,6 @@ namespace MyDnsSync
     internal sealed class ApplicationMain : IDisposable
     {
         // メンバ変数定義
-        private ILog logger;
         private Container components;
 
 
@@ -58,13 +57,11 @@ namespace MyDnsSync
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-            // ログシステムの初期化をしてロガーの取得
+            // ログシステムの初期化
             ApplicationUtility.InitializeLogSystemConfig();
-            logger = LogManager.GetLogger(GetType());
 
 
             // コンポーネントを格納するコンテナを生成
-            logger.Debug("コンポーネントを初期化しています");
             components = new Container();
 
 
@@ -75,7 +72,6 @@ namespace MyDnsSync
 
             // MyDNS同期コンポーネントを生成する
             new MyDnsSyncHandler(components);
-            logger.Debug("コンポーネントを初期化しました");
         }
 
 
@@ -95,9 +91,7 @@ namespace MyDnsSync
         private void Run()
         {
             // Windowsメインループを開始する
-            logger.Info("アプリケーションを起動しています");
             Application.Run();
-            logger.Info("アプリケーションが終了しました");
         }
     }
 }
