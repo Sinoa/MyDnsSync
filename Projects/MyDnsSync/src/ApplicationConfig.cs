@@ -108,7 +108,7 @@ namespace MyDnsSync
     /// <summary>
     /// 汎用的なアプリケーション情報を保持した設定クラスです
     /// </summary>
-    internal class GeneralConfig
+    public class GeneralConfig
     {
         // メンバ変数定義
         private bool enableAutoSync;
