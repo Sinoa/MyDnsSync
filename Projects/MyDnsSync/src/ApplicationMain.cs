@@ -61,6 +61,10 @@ namespace MyDnsSync
             Application.SetCompatibleTextRenderingDefault(false);
 
 
+            // アプリケーションコンフィグをロードする
+            ApplicationConfig.Load();
+
+
             // ログシステム、コンポーネントの初期化
             InitializeLogSystemConfig();
             InitializeComponents();
@@ -112,6 +116,10 @@ namespace MyDnsSync
         {
             // 生成したコンポーネントすべて破棄する
             components.Dispose();
+
+
+            // アプリケーションコンフィグをセーブする
+            ApplicationConfig.Save();
         }
 
 
