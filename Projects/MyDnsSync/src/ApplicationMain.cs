@@ -15,9 +15,13 @@
 
 using System;
 using System.ComponentModel;
+using System.Text;
 using System.Windows.Forms;
-using log4net;
+using log4net.Appender;
+using log4net.Config;
+using log4net.Layout;
 using MyDnsSync.Components;
+using MyDnsSync.Properties;
 
 namespace MyDnsSync
 {
@@ -57,10 +61,36 @@ namespace MyDnsSync
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-            // ログシステムの初期化
-            ApplicationUtility.InitializeLogSystemConfig();
+            // ログシステム、コンポーネントの初期化
+            InitializeLogSystemConfig();
+            InitializeComponents();
+        }
 
 
+        /// <summary>
+        /// ログシステムの設定を初期化します
+        /// </summary>
+        private void InitializeLogSystemConfig()
+        {
+            // ファイルアペンダを生成して初期化をする
+            var fileAppender = new FileAppender();
+            fileAppender.Layout = new PatternLayout(Resources.LogTextFormat);
+            fileAppender.File = Resources.DefaultOutputLogFilePath;
+            fileAppender.Encoding = new UTF8Encoding(false);
+            fileAppender.ImmediateFlush = true;
+            fileAppender.ActivateOptions();
+
+
+            // ファイルアペンダで設定を行う
+            BasicConfigurator.Configure(fileAppender);
+        }
+
+
+        /// <summary>
+        /// アプリケーションで使用するコンポーネントの初期化をします
+        /// </summary>
+        private void InitializeComponents()
+        {
             // コンポーネントを格納するコンテナを生成
             components = new Container();
 

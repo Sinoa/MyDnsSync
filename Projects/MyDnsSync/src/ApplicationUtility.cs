@@ -89,24 +89,5 @@ namespace MyDnsSync
             // 資格情報を削除する
             CredentialManager.RemoveCredentials(Resources.CredentialTargetName);
         }
-
-
-        /// <summary>
-        /// ログシステムの設定を初期化します
-        /// </summary>
-        public static void InitializeLogSystemConfig()
-        {
-            // ファイルアペンダを生成して初期化をする
-            var fileAppender = new FileAppender();
-            fileAppender.Layout = new PatternLayout(Resources.LogTextFormat);
-            fileAppender.File = Resources.DefaultOutputLogFilePath;
-            fileAppender.Encoding = new UTF8Encoding(false);
-            fileAppender.ImmediateFlush = true;
-            fileAppender.ActivateOptions();
-
-
-            // ファイルアペンダで設定を行う
-            BasicConfigurator.Configure(fileAppender);
-        }
     }
 }
