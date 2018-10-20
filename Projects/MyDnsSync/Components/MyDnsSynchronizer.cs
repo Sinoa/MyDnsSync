@@ -13,27 +13,49 @@
 // 2. Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 
+using System;
+using System.ComponentModel;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using AdysTech.CredentialManager;
 using AngleSharp.Parser.Html;
+using MyDnsSync.Properties;
 
-namespace MyDnsSync
+namespace MyDnsSync.Components
 {
     /// <summary>
-    /// MyDNSにアドレスの同期を行うクラスです
+    /// MyDNSにアドレスの同期を行うコンポーネントクラスです
     /// </summary>
-    internal class MyDnsSynchronizer
+    public partial class MyDnsSynchronizer : Component
     {
-        // 定数定義
-        private const string MyDnsLoginUrl = "http://www.mydns.jp/login.html";
-        private const string SuccessMessagePattern = "Login and IP address notify OK.";
-
         // クラス変数宣言
         private static readonly HttpClient httpClient = new HttpClient();
+        private static readonly string MyDnsLoginUrl = Resources.MyDnsLoginUrl;
+        private static readonly string SuccessMessagePattern = Resources.MyDnsSyncSuccessMessagePattern;
 
+
+
+        /// <summary>
+        /// MyDnsSynchronizer のインスタンスを初期化します
+        /// </summary>
+        /// <param name="container">このコンポーネントを保持するコンテナ</param>
+        /// <exception cref="ArgumentNullException">container が null です</exception>
+        public MyDnsSynchronizer(IContainer container)
+        {
+            // null を渡されたら
+            if (container == null)
+            {
+                // 管理をして下さい
+                throw new ArgumentNullException(nameof(container));
+            }
+
+
+            // コンテナに自身を追加して、フォームデザイナの初期化関数を叩く
+            container.Add(this);
+            InitializeComponent();
+        }
 
 
         /// <summary>

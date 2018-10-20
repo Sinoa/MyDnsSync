@@ -47,11 +47,17 @@
     <Compile Include="Components\MainNotifyIcon.Designer.cs">
       <DependentUpon>MainNotifyIcon.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\MyDnsSyncHandler.cs">
+    <Compile Include="Components\MyDnsSynchronizer.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Components\MyDnsSyncHandler.Designer.cs">
-      <DependentUpon>MyDnsSyncHandler.cs</DependentUpon>
+    <Compile Include="Components\MyDnsSynchronizer.Designer.cs">
+      <DependentUpon>MyDnsSynchronizer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\SyncScheduler.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\SyncScheduler.Designer.cs">
+      <DependentUpon>SyncScheduler.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -62,7 +68,6 @@
     <Compile Include="src\ApplicationConfig.cs" />
     <Compile Include="src\ApplicationMain.cs" />
     <Compile Include="src\ApplicationUtility.cs" />
-    <Compile Include="src\MyDnsSynchronizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AdysTech.CredentialManager, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -85,8 +90,8 @@
     <EmbeddedResource Include="Components\MainNotifyIcon.resx">
       <DependentUpon>MainNotifyIcon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Components\MyDnsSyncHandler.resx">
-      <DependentUpon>MyDnsSyncHandler.cs</DependentUpon>
+    <EmbeddedResource Include="Components\SyncScheduler.resx">
+      <DependentUpon>SyncScheduler.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

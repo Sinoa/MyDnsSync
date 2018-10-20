@@ -102,10 +102,6 @@ namespace MyDnsSync
             // メイン通知アイコンを生成して表示する
             var mainNotifyIcon = new MainNotifyIcon(components);
             mainNotifyIcon.Show();
-
-
-            // MyDNS同期コンポーネントを生成する
-            new MyDnsSyncHandler(components);
         }
 
 

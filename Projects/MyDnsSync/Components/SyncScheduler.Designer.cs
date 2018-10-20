@@ -1,6 +1,6 @@
 ﻿namespace MyDnsSync.Components
 {
-    partial class MyDnsSyncHandler
+    partial class SyncScheduler
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.watchTimer = new System.Windows.Forms.Timer(this.components);
             // 
-            // timer
+            // watchTimer
             // 
-            this.timer.Tick += new System.EventHandler(this.OnTimerTick);
+            this.watchTimer.Interval = 30000;
+            this.watchTimer.Tick += new System.EventHandler(this.OnWatchTimerTick);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Timer watchTimer;
     }
 }

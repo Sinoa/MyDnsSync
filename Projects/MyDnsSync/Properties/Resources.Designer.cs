@@ -106,6 +106,24 @@ namespace MyDnsSync.Properties {
         }
         
         /// <summary>
+        ///   http://www.mydns.jp/login.html に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string MyDnsLoginUrl {
+            get {
+                return ResourceManager.GetString("MyDnsLoginUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Login and IP address notify OK. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string MyDnsSyncSuccessMessagePattern {
+            get {
+                return ResourceManager.GetString("MyDnsSyncSuccessMessagePattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
         /// </summary>
         internal static System.Drawing.Icon SyncErrorIcon {
