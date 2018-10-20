@@ -89,6 +89,8 @@ namespace MyDnsSync.Components
 
             // 各種イベントの登録をする
             exitMenuItem.Click += OnExitMenuItemClick;
+            immediateSyncMenuItem.Click += OnImmediateSyncMenuItemClick;
+            removeAccountMenuItem.Click += OnRemoveAccountMenuItemClick;
         }
 
 
@@ -101,6 +103,63 @@ namespace MyDnsSync.Components
         {
             // アプリケーションの終了を呼ぶ
             Application.Exit();
+        }
+
+
+        /// <summary>
+        /// 直ちに同期するメニューのクリックハンドリングを行います
+        /// </summary>
+        /// <param name="sender">イベントを起こしたオブジェクト</param>
+        /// <param name="e">イベント内容</param>
+        private async void OnImmediateSyncMenuItemClick(object sender, EventArgs e)
+        {
+            // ログインダイアログ表示付きの認証情報取得をする
+            var credential = ApplicationUtility.GetCredential(true);
+
+
+            // もし認証情報の取得ができなかった場合は
+            if (credential == null)
+            {
+                // ログイン情報が無いから同期ができないエラーを表示して終了
+                MessageBox.Show("ログイン情報が入力されていないため、同期に失敗しました", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            // 同期を直ちに行い失敗したら
+            if (!await synchronizer.DoSynchronizeAsync(credential))
+            {
+                // 同期に失敗したことを表示して終了
+                MessageBox.Show("同期に失敗しました", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            // 同期が出来たことを表示
+            MessageBox.Show("同期に成功しました", "同期完了", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
+        /// <summary>
+        /// アカウントを削除するメニューのクリックハンドリングを行います
+        /// </summary>
+        /// <param name="sender">イベントを起こしたオブジェクト</param>
+        /// <param name="e">イベント内容</param>
+        private void OnRemoveAccountMenuItemClick(object sender, EventArgs e)
+        {
+            // 本当に削除しても良いか確認をして、いいえなら
+            var message = "MyDNSへのログイン情報を本当に削除しますか？\n再び手動同期を行う際にログインを求められ\n自動同期が行われなくなります。";
+            var title = "警告";
+            if (MessageBox.Show(message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+            {
+                // ここでやめる
+                return;
+            }
+
+
+            // 認証情報を削除して削除したことを伝える
+            ApplicationUtility.RemoveCredential();
+            MessageBox.Show("MyDNSへのログイン情報を削除しました", "情報", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 

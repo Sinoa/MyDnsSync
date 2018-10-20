@@ -30,28 +30,52 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ContextMenuStrip contextMenuStrip;
-            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+            this.immediateSyncMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.removeAccountMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             contextMenuStrip.SuspendLayout();
+            // 
+            // contextMenuStrip
+            // 
+            contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.immediateSyncMenuItem,
+            this.removeAccountMenuItem,
+            toolStripSeparator1,
+            this.exitMenuItem});
+            contextMenuStrip.Name = "contextMenuStrip";
+            contextMenuStrip.Size = new System.Drawing.Size(187, 76);
+            // 
+            // immediateSyncMenuItem
+            // 
+            this.immediateSyncMenuItem.Name = "immediateSyncMenuItem";
+            this.immediateSyncMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.immediateSyncMenuItem.Text = "直ちに同期する";
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new System.Drawing.Size(183, 6);
+            // 
+            // exitMenuItem
+            // 
+            this.exitMenuItem.Name = "exitMenuItem";
+            this.exitMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.exitMenuItem.Text = "終了";
             // 
             // notifyIcon
             // 
             this.notifyIcon.ContextMenuStrip = contextMenuStrip;
             this.notifyIcon.Text = "MyDnsSync";
             // 
-            // contextMenuStrip
+            // removeAccountMenuItem
             // 
-            contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitMenuItem});
-            contextMenuStrip.Name = "contextMenuStrip";
-            contextMenuStrip.Size = new System.Drawing.Size(99, 26);
-            // 
-            // exitMenuItem
-            // 
-            this.exitMenuItem.Name = "exitMenuItem";
-            this.exitMenuItem.Size = new System.Drawing.Size(98, 22);
-            this.exitMenuItem.Text = "終了";
+            this.removeAccountMenuItem.Name = "removeAccountMenuItem";
+            this.removeAccountMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.removeAccountMenuItem.Text = "ログイン情報を削除する";
             contextMenuStrip.ResumeLayout(false);
 
         }
@@ -60,5 +84,7 @@
 
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.ToolStripMenuItem exitMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem immediateSyncMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeAccountMenuItem;
     }
 }

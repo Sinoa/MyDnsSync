@@ -14,11 +14,7 @@
 // 3. This notice may not be removed or altered from any source distribution.
 
 using System.Net;
-using System.Text;
 using AdysTech.CredentialManager;
-using log4net.Appender;
-using log4net.Config;
-using log4net.Layout;
 using MyDnsSync.Properties;
 
 namespace MyDnsSync
@@ -86,6 +82,14 @@ namespace MyDnsSync
         /// </summary>
         public static void RemoveCredential()
         {
+            // 資格情報が最初から存在しないなら
+            if (GetCredential(false) == null)
+            {
+                // 何もしない
+                return;
+            }
+
+
             // 資格情報を削除する
             CredentialManager.RemoveCredentials(Resources.CredentialTargetName);
         }
