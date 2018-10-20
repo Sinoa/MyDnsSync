@@ -44,16 +44,8 @@ namespace MyDnsSync.Components
         /// <exception cref="ArgumentNullException">container が null です</exception>
         public MyDnsSynchronizer(IContainer container)
         {
-            // null を渡されたら
-            if (container == null)
-            {
-                // 管理をして下さい
-                throw new ArgumentNullException(nameof(container));
-            }
-
-
             // コンテナに自身を追加して、フォームデザイナの初期化関数を叩く
-            container.Add(this);
+            (container ?? throw new ArgumentNullException(nameof(container))).Add(this);
             InitializeComponent();
         }
 
