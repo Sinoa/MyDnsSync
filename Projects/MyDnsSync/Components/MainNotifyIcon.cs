@@ -52,44 +52,28 @@ namespace MyDnsSync.Components
 
         // メンバ変数定義
         private Dictionary<IconPattern, Icon> iconTable;
+        private MyDnsSynchronizer synchronizer;
+        private SyncScheduler scheduler;
 
-
-
-        /// <summary>
-        /// MainNotifyIcon のインスタンスを初期化します
-        /// </summary>
-        public MainNotifyIcon()
-        {
-            // フォームデザイナが生成した初期化関数を叩く
-            InitializeComponent();
-
-
-            // 共通の初期化関数を叩く
-            InitializeCommon();
-        }
 
 
         /// <summary>
         /// MainNotifyIcon のインスタンスを初期化します
         /// </summary>
         /// <param name="container">このコンポーネントを格納するコンテナ</param>
-        public MainNotifyIcon(IContainer container)
+        /// <exception cref="ArgumentNullException">container, synchronizer, scheduler のいずれかが null です</exception>
+        public MainNotifyIcon(IContainer container, MyDnsSynchronizer synchronizer, SyncScheduler scheduler)
         {
             // コンテナに自信を追加してフォームデザイナの初期化関数を叩く
-            container.Add(this);
+            (container ?? throw new ArgumentNullException(nameof(container))).Add(this);
             InitializeComponent();
 
 
-            // 共通の初期化関数を叩く
-            InitializeCommon();
-        }
+            // 参照を受け取る
+            this.synchronizer = synchronizer ?? throw new ArgumentNullException(nameof(synchronizer));
+            this.scheduler = scheduler ?? throw new ArgumentNullException(nameof(scheduler));
 
 
-        /// <summary>
-        /// 共通のインスタンス初期化を行います
-        /// </summary>
-        private void InitializeCommon()
-        {
             // アイコンテーブルを初期化する
             iconTable = new Dictionary<IconPattern, Icon>()
             {

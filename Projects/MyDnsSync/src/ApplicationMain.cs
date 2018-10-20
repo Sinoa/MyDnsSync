@@ -99,8 +99,16 @@ namespace MyDnsSync
             components = new Container();
 
 
+            // MyDNS同期コンポーネントを生成する
+            var myDnsSynchronizer = new MyDnsSynchronizer(components);
+
+
+            // スケジューラコンポーネントを生成する
+            var scheduler = new SyncScheduler(components);
+
+
             // メイン通知アイコンを生成して表示する
-            var mainNotifyIcon = new MainNotifyIcon(components);
+            var mainNotifyIcon = new MainNotifyIcon(components, myDnsSynchronizer, scheduler);
             mainNotifyIcon.Show();
         }
 
